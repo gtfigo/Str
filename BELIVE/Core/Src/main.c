@@ -97,10 +97,9 @@ static void Display_DemoDescription(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 typedef struct {
-  uint32_t data1;
-  uint32_t data2;
-  uint16_t data3;
-  uint16_t data4;
+  uint32_t minuta;
+  uint32_t godzina;
+  uint16_t sekunda;
 } EEPROM_Data_TypeDef;
 
 char time[30];
@@ -115,12 +114,15 @@ RTC_TimeTypeDef sTime;
   */
 int main(void)
 {
+	HAL_FLASH_Unlock();
+	__HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR); //Clear Flash flags
+
   /* USER CODE BEGIN 1 */
 	EEPROM_Data_TypeDef eeprom_data;
 	eeprom_data.data1 = 0x12345678;
-//	HAL_FLASHEx_DATAEEPROM_Unlock(); //Unlock the EEPROM interface
+	HAL_FLASHEx_DATAEEPROM_Unlock();//Unlock the EEPROM interface
 	uint32_t address = EEPROM_START_ADDRESS; //Set the EEPROM start address
-	//HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAM_WORD, address, eeprom_data.data1); //Program the first word of data
+	HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAM_WORD, address, eeprom_data.data1); //Program the first word of data
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
