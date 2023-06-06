@@ -191,8 +191,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  //HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
-	  //HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
+	  HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+	  HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
 
 
 	  sprintf(date,"Date: %02d.%02d.%02d\t",sDate.Date,sDate.Month,sDate.Year);
