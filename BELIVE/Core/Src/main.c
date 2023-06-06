@@ -195,8 +195,8 @@ int main(void)
 	  HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
 
 
-	  //sprintf(date,"Date: %02d.%02d.%02d\t",sDate.Date,sDate.Month,sDate.Year);
-	 // sprintf(time,"Time: %02d.%02d.%02d\r\n",sTime.Hours,sTime.Minutes,sTime.Seconds);
+	  sprintf(date,"Date: %02d.%02d.%02d\t",sDate.Date,sDate.Month,sDate.Year);
+	 sprintf(time,"Time: %02d.%02d.%02d\r\n",sTime.Hours,sTime.Minutes,sTime.Seconds);
 
 
 
