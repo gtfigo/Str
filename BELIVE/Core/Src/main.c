@@ -307,15 +307,29 @@ static void MX_I2C3_Init(void)
   /* USER CODE END I2C3_Init 2 */
 
 }
+static void ClearScreen(void)
+{
+  BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+  BSP_LCD_Clear(LCD_COLOR_WHITE);
+}
+
 static void Display_DemoDescription(void)
 {
+	int16_t minuta=0;
+	int16_t godzina=0;
+	int16_t licznik=0;
   uint8_t desc[50];
+  int16_t circle1_x = 25;
+  int16_t circle1_y = 200;
+  int16_t circle2_x = 25;
+  int16_t circle2_y = 200;
+  int16_t pozycja = 5;
 
-  /* Set LCD Foreground Layer  */
+  /* Set LCD Foreground Layer */
   BSP_LCD_SelectLayer(1);
 
   BSP_LCD_SetFont(&LCD_DEFAULT_FONT);
-
+  ClearScreen();
   /* Clear the LCD */
   BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
   BSP_LCD_Clear(LCD_COLOR_WHITE);
@@ -324,22 +338,92 @@ static void Display_DemoDescription(void)
   BSP_LCD_SetTextColor(LCD_COLOR_DARKBLUE);
 
   /* Display LCD messages */
-  BSP_LCD_DisplayStringAt(0, 10, (uint8_t*)"Chuje kurwa co to ma byc", CENTER_MODE);
-  BSP_LCD_SetFont(&Font16);
-  BSP_LCD_DisplayStringAt(0, 35, (uint8_t*)"Drivers examples", CENTER_MODE);
 
-  /* Draw Bitmap */
+  while (1) {
+	  ClearScreen();
+	  minuta++;
+	  licznik++;
+	  if(licznik==4&&godzina<6){
+		    circle2_x++;
+	 	   circle2_y=circle2_y-1;
+	 	   licznik=0;
+	  }
+	  if(licznik==4&&godzina<12&&godzina>=6){
+	 		    circle2_x++;
+	 	 	   circle2_y=circle2_y+1;
+	 	 	   licznik=0;
+	 	  }
+	   if(minuta==60){
+	 	  minuta=0;
+	 	  godzina++;
+	   }
+	   if(licznik==4&&godzina<18&&godzina>=12){
+	 		    circle1_x++;
+	 	 	   circle1_y=circle1_y-1;
+	 	 	   licznik=0;
+	 	  }
+	 	  if(licznik==4&&godzina<24&&godzina>=18){
+	 	 		    circle1_x++;
+	 	 	 	   circle1_y=circle1_y+1;
+	 	 	 	   licznik=0;
+	 	 	  }
+	   if(godzina==24){
+	   	 	  godzina=0;
+	   	 	 circle1_x = 25;
+	   	 	  circle1_y = 200;
+	   	 	 circle2_x = 25;
+	   	 	 circle2_y = 200;
+	   }
+    /* Draw Bitmap */
+	  char minuta_str[10];
+	  sprintf(minuta_str, "%d", minuta);
+	  char godzina_str[10];
+	  	  sprintf(godzina_str, "%d", godzina);
+	      BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	      BSP_LCD_SetFont(&Font20);
+	  BSP_LCD_DisplayStringAt(0, 10, (uint8_t*)"Godzina: ", CENTER_MODE);
+	  BSP_LCD_DisplayStringAt(0, 25, (uint8_t*)godzina_str, CENTER_MODE);
+	  BSP_LCD_DisplayStringAt(0, 40, (uint8_t*)minuta_str, CENTER_MODE);
+	  if(godzina>=12){
+    BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
+    BSP_LCD_DrawCircle(circle1_x, circle1_y, 20);
+    BSP_LCD_FillCircle(circle1_x, circle1_y, 20);
+    BSP_LCD_DrawLine(circle1_x+40, circle1_y, circle1_x-40, circle1_y);
+    BSP_LCD_DrawLine(circle1_x, circle1_y-40, circle1_x, circle1_y+40);
+    BSP_LCD_DrawLine(circle1_x+40, circle1_y+40, circle1_x-40, circle1_y-40);
+    BSP_LCD_DrawLine(circle1_x+40, circle1_y-40, circle1_x-40, circle1_y+40);
+	  }
+	  if(godzina<12){
+    BSP_LCD_SetTextColor(LCD_COLOR_GRAY);
+    BSP_LCD_DrawCircle(circle2_x, circle2_y, 20);
+    BSP_LCD_FillCircle(circle2_x, circle2_y, 20);
+	  }
+    /* Update circle positions */
+ /*  circle1_x += circle_speed;
+    circle2_x -= circle_speed;
+    circle1_y += circle_speed;
+    circle2_y -= circle_speed; */
 
-  BSP_LCD_SetFont(&Font8);
-  BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize()- 20, (uint8_t*)"Copyright (c) STMicroelectronics 2017", CENTER_MODE);
+    /* Check boundaries and reverse direction if needed */
+  /* if (circle1_x >= BSP_LCD_GetXSize() - 20 || circle1_x <= 20) {
+      circle_speed = -circle_speed;
+    }*/
+    //if(circle_y==10)
+    /* Clear the area where description is displayed */
+    BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+    BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
+    BSP_LCD_FillRect(0, BSP_LCD_GetYSize() / 2 + 45, BSP_LCD_GetXSize(), 200);
 
-  BSP_LCD_SetFont(&Font12);
-  BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
-  BSP_LCD_FillRect(0, BSP_LCD_GetYSize()/2 + 15, BSP_LCD_GetXSize(), 60);
-  BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-  BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
-  BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize()/2 + 30, (uint8_t*)"Press USER Button to start:", CENTER_MODE);
-  BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize()/2 + 45, (uint8_t *)desc, CENTER_MODE);
+    /* Display description */
+    BSP_LCD_SetFont(&Font12);
+    BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
+ //   BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize() / 2 + 45, (uint8_t *)desc, CENTER_MODE);
+
+    /* Delay to control the animation speed */
+    BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
+    BSP_LCD_FillRect(0, BSP_LCD_GetYSize()/2 +50, BSP_LCD_GetXSize(), 200);
+    HAL_Delay(100);
+  }
 }
 /**
   * @brief LTDC Initialization Function
