@@ -132,8 +132,6 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
-  
-
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -384,6 +382,7 @@ static void Display_DemoDescription(void)
     HAL_Delay(100);
   }
 }
+
 /**
   * @brief LTDC Initialization Function
   * @param None
@@ -400,7 +399,7 @@ static void MX_LTDC_Init(void)
   LTDC_LayerCfgTypeDef pLayerCfg1 = {0};
 
   /* USER CODE BEGIN LTDC_Init 1 */
-
+  ili9341_Init();
   /* USER CODE END LTDC_Init 1 */
   hltdc.Instance = LTDC;
   hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
