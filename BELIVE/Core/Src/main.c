@@ -132,6 +132,30 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
+  
+  void EEPROM_demo(void)
+{ 
+  EEPROM_SetHint();
+  EEPROMFeature = 0;
+  
+  EEPROM_Show_Feature(EEPROMFeature); 
+  
+  while (1)
+  {
+    if(CheckForUserInput() > 0)
+    {
+      if(++EEPROMFeature < EEPROM_FEATURES_NUM)
+      {
+        EEPROM_Show_Feature(EEPROMFeature); 
+      }
+      else
+      {
+        return;
+      }
+    }
+    HAL_Delay(100);
+  }
+}
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
