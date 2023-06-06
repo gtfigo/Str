@@ -19,6 +19,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f429i_discovery_lcd.h"
+#include "stm32f4xx_hal_flash_ex.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_flash.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -26,6 +30,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+#define EEPROM_START_ADDRESS ((uint32_t)0x08080000) //EEPROM start address
+#define EEPROM_SIZE          ((uint32_t)0x00020000) //EEPROM size: 128KB
 
 /* USER CODE END PTD */
 
@@ -70,6 +76,9 @@ static void MX_SPI5_Init(void);
 #define  CIRCLE_XPOS      ( BSP_LCD_GetXSize() / 5)
 #define  CIRCLE_YPOS      (BSP_LCD_GetYSize() - 30)
 static void Display_DemoDescription(void);
+#define EEPROM_SIZE          ((uint32_t)0x00020000) //EEPROM size: 128KB
+#define FLASH_SECTOR   FLASH_SECTOR_11  // Choose your flash sector
+#define EEPROM_START_ADDRESS    ((uint32_t)0x080E0000) // Choose the address that matches your sector address
 
 /* USER CODE END PFP */
 
@@ -85,8 +94,16 @@ static void Display_DemoDescription(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	int godzina =1212;
+	uint32_t address=0x080E0000;
+	HAL_FLASH_Unlock();
+		__HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR); //Clear Flash flags
+		FLASH_Erase_Sector(FLASH_SECTOR, VOLTAGE_RANGE_3);  // Erase the specified flash sector
 
-  /* USER CODE END 1 */
+		    HAL_FLASH_Program(TYPEPROGRAM_WORD, address, godzina);  // Program the word at the specified address
+
+		    HAL_FLASH_Lock();  // Lock the Flash to disable the
+		/* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -338,7 +355,7 @@ static void Display_DemoDescription(void)
 	  	  sprintf(godzina_str, "%d", godzina);
 	      BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	      BSP_LCD_SetFont(&Font20);
-	  BSP_LCD_DisplayStringAt(0, 10, (uint8_t*)"Godziny: ", CENTER_MODE);
+	  BSP_LCD_DisplayStringAt(0, 10, (uint8_t*)"Godzina: ", CENTER_MODE);
 	  BSP_LCD_DisplayStringAt(0, 25, (uint8_t*)godzina_str, CENTER_MODE);
 	  BSP_LCD_DisplayStringAt(0, 40, (uint8_t*)minuta_str, CENTER_MODE);
 	  if(godzina>=12){
@@ -642,3 +659,4 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
