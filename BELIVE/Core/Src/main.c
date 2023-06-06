@@ -338,7 +338,7 @@ static void Display_DemoDescription(void)
 	  	  sprintf(godzina_str, "%d", godzina);
 	      BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	      BSP_LCD_SetFont(&Font20);
-	  BSP_LCD_DisplayStringAt(0, 10, (uint8_t*)"Godzina: ", CENTER_MODE);
+	  BSP_LCD_DisplayStringAt(0, 10, (uint8_t*)"Godziny i minuty: ", CENTER_MODE);
 	  BSP_LCD_DisplayStringAt(0, 25, (uint8_t*)godzina_str, CENTER_MODE);
 	  BSP_LCD_DisplayStringAt(0, 40, (uint8_t*)minuta_str, CENTER_MODE);
 	  if(godzina>=12){
