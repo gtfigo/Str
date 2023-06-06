@@ -1,0 +1,12 @@
+main.c:85:5:main	1
+main.c:135:6:SystemClock_Config	4
+main.c:188:13:MX_DMA2D_Init	3
+main.c:225:13:MX_I2C3_Init	4
+main.c:267:13:ClearScreen	1
+main.c:273:13:Display_DemoDescription	16
+main.c:391:13:MX_LTDC_Init	4
+main.c:473:13:MX_SPI5_Init	2
+main.c:511:13:MX_USART1_UART_Init	2
+main.c:540:13:MX_FMC_Init	2
+main.c:591:13:MX_GPIO_Init	1
+main.c:618:6:Error_Handler	1

@@ -1,47 +1,32 @@
-14:09:31 **** Incremental Build of configuration Debug for project BELIVE ****
+17:16:37 **** Incremental Build of configuration Debug for project BELIVE ****
 make -j4 all 
-arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/BSP/STM32F429I-Discovery -I../Utilities/Log -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
-arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/BSP/STM32F429I-Discovery -I../Utilities/Log -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
-arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/BSP/STM32F429I-Discovery -I../Utilities/Log -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
-arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/BSP/STM32F429I-Discovery -I../Utilities/Log -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.o"
-In file included from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:27,
-                 from ../Core/Inc/stm32f4xx_hal_conf.h:275,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c:36:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:29:10: fatal error: stm32f4xx.h: No such file or directory
-   29 | #include "stm32f4xx.h"
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-In file included from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:27,
-                 from ../Core/Inc/stm32f4xx_hal_conf.h:275,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c:81:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:29:10: fatal error: stm32f4xx.h: No such file or directory
-   29 | #include "stm32f4xx.h"
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-make: *** [Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk:91: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o] Error 1
-make: *** Waiting for unfinished jobs....
-In file included from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:27,
-                 from ../Core/Inc/stm32f4xx_hal_conf.h:275,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c:97:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:29:10: fatal error: stm32f4xx.h: No such file or directory
-   29 | #include "stm32f4xx.h"
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-make: *** [Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk:91: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o] Error 1
-make: *** [Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk:91: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o] Error 1
-In file included from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:27,
-                 from ../Core/Inc/stm32f4xx_hal_conf.h:275,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.c:164:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:29:10: fatal error: stm32f4xx.h: No such file or directory
-   29 | #include "stm32f4xx.h"
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-make: *** [Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk:91: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.o] Error 1
-"make -j4 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/BSP/STM32F429I-Discovery -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Utilites/Log -I../USB_HOST/App -I../USB_HOST/Target -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Display_DemoDescription':
+../Core/Src/main.c:336:4: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  336 |    sprintf(minuta_str, "%d", minuta);
+      |    ^~~~~~~
+../Core/Src/main.c:336:4: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:22:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   21 | #include "stm32f429i_discovery_lcd.h"
+  +++ |+#include <stdio.h>
+   22 | /* Private includes ----------------------------------------------------------*/
+../Core/Src/main.c:283:11: warning: unused variable 'pozycja' [-Wunused-variable]
+  283 |   int16_t pozycja = 5;
+      |           ^~~~~~~
+../Core/Src/main.c:278:11: warning: unused variable 'desc' [-Wunused-variable]
+  278 |   uint8_t desc[50];
+      |           ^~~~
+arm-none-eabi-gcc -o "BELIVE.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/zabolski_m_ext/komit/Str-3db7faa9c449696de3d6491783178a48c6be424a/BELIVE/BELIVE/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BELIVE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BELIVE.elf
+ 
+arm-none-eabi-size   BELIVE.elf 
+arm-none-eabi-objdump -h -S  BELIVE.elf  > "BELIVE.list"
+   text	   data	    bss	    dec	    hex	filename
+  55344	    212	   3796	  59352	   e7d8	BELIVE.elf
+Finished building: default.size.stdout
+ 
+Finished building: BELIVE.list
+ 
 
-14:09:32 Build Failed. 9 errors, 0 warnings. (took 991ms)
+17:16:39 Build Finished. 0 errors, 4 warnings. (took 1s.594ms)
 
