@@ -245,7 +245,14 @@ static void Display_DemoDescription(void)
   /* Display LCD messages */
 
   while (1) {
-	
+	  ClearScreen();
+	  minuta++;
+	  licznik++;
+	  if(licznik==4&&godzina<6){
+		    circle2_x++;
+	 	   circle2_y=circle2_y-1;
+	 	   licznik=0;
+	  }
 	  if(licznik==4&&godzina<12&&godzina>=6){
 	 		    circle2_x++;
 	 	 	   circle2_y=circle2_y+1;
