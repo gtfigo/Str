@@ -75,7 +75,26 @@ static void Display_DemoDescription(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+typedef enum {FAILED = 0, PASSED = !FAILED} TestStatus;
 
+/* Private define ------------------------------------------------------------*/
+#define EEPROM_FEATURES_NUM     2
+#define BUFFER_SIZE1            (countof(Tx1Buffer)-1 + 9)
+#define EEPROM_WRITE_ADDRESS1   0x50
+#define EEPROM_READ_ADDRESS1    0x50
+
+/* Private macro -------------------------------------------------------------*/
+#define countof(a) (sizeof(a) / sizeof(*(a)))
+
+/* Private variables ---------------------------------------------------------*/
+extern uint8_t NbLoop;
+static uint8_t EEPROMFeature = 0;
+uint8_t EEPROMConnected =1;
+
+/* Private function prototypes -----------------------------------------------*/
+static void EEPROM_SetHint(void);
+static void EEPROM_Show_Feature(uint8_t feature);
+static TestStatus Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint16_t BufferLength);
 /* USER CODE END 0 */
 
 /**
